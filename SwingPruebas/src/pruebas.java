@@ -12,6 +12,7 @@ public class pruebas {
 
 	JFrame frame;
 	public JPanel[][] celdasTablero = new JPanel[20][20];
+	public int teclaPulsada;
 	
 
 	/**
@@ -28,9 +29,29 @@ public class pruebas {
 		frame = new JFrame();
 		frame.setBounds(300, 300, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addKeyListener(new KeyListener() {
+
+			@Override
+			public void keyTyped(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyReleased(KeyEvent arg0) {
+				// TODO Auto-generated method stub
+
+			}
+
+			@Override
+			public void keyPressed(KeyEvent arg0) {
+				teclaPulsada = arg0.getKeyCode();
+
+			}
+		});
 		
 		JPanel tablero = new JPanel();
-		tablero.setLayout(new GridLayout(20, 20, 1, 1));
+		tablero.setLayout(new GridLayout(20, 20, 0, 0));
 
 		for (int x = 0; x < celdasTablero.length; x++) {
 			for (int y = 0; y < celdasTablero[0].length; y++) {
