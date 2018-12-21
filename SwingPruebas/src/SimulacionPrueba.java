@@ -5,6 +5,26 @@ public class SimulacionPrueba {
 
 	byte[][] mundo = new byte[20][20];
 	ArrayList<SnakePrueba> snake = new ArrayList<SnakePrueba>();
+	private Thread ejecucion = new Thread(new Runnable() {
+
+		@Override
+		public void run() {
+
+			for (int i = 0; true; i++) {
+				System.out.println("\n----- Tiempo " + i + " --------\n");
+				mostrarMundo();
+
+				try {
+					Thread.sleep(200);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+				actualizarMundo();
+			}
+		}
+	});
 
 	int posicionXAux;
 	int posicionYAux;
@@ -18,27 +38,9 @@ public class SimulacionPrueba {
 	 * Inicia el mundo
 	 */
 	public void iniciarMundo() {
-		new Thread(new Runnable() {
 
-			@Override
-			public void run() {
+		ejecucion.start();
 
-				for (int i = 0; true; i++) {
-					System.out.println("\n----- Tiempo " + i + " --------\n");
-					mostrarMundo();
-
-					try {
-						Thread.sleep(300);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-
-					actualizarMundo();
-
-				}
-			}
-		}).start();
 	}
 
 	private void actualizarMundo() {
@@ -48,8 +50,13 @@ public class SimulacionPrueba {
 			agrandarSnake();
 			generarFruta();
 		}
-		actualizarCuerpo();
 
+		actualizarCuerpo();
+		if (chocaConSerpiente()) {
+			System.out.println("GAME OVER");
+			ejecucion.stop();
+		}
+		// System.out.println(mundo [0][0]);
 		actualizarArrayMundo();
 
 	}
@@ -114,8 +121,9 @@ public class SimulacionPrueba {
 			int yAux = posicionYAux;
 
 			guardarPosicion(snake.get(i));
-			ponerPosicionAnteriorEnBlanco(snake.get(i));
-
+			if (i == snake.size() - 1) {
+				ponerPosicionAnteriorEnBlanco(snake.get(i));
+			}
 			snake.get(i).setX(xAux);
 			snake.get(i).setY(yAux);
 		}
@@ -129,31 +137,39 @@ public class SimulacionPrueba {
 
 	private void moverArriba() {
 		guardarPosicion(snake.get(0));
-		ponerPosicionAnteriorEnBlanco(snake.get(0));
+		if (snake.size() == 1) {
+			ponerPosicionAnteriorEnBlanco(snake.get(0));
+		}
 		int posicionX = snake.get(0).getX();
 		if (posicionX == 0) {
 			posicionX = mundo.length;
 		}
 		posicionX--;
+
 		snake.get(0).setX(posicionX);
 	}
 
 	private void moverAbajo() {
 
 		guardarPosicion(snake.get(0));
-		ponerPosicionAnteriorEnBlanco(snake.get(0));
+		if (snake.size() == 1) {
+			ponerPosicionAnteriorEnBlanco(snake.get(0));
+		}
 		int posicionX = snake.get(0).getX();
 		if (posicionX == mundo.length - 1) {
 			posicionX = -1;
 		}
 		posicionX++;
+
 		snake.get(0).setX(posicionX);
 	}
 
 	private void moverDerecha() {
 
 		guardarPosicion(snake.get(0));
-		ponerPosicionAnteriorEnBlanco(snake.get(0));
+		if (snake.size() == 1) {
+			ponerPosicionAnteriorEnBlanco(snake.get(0));
+		}
 		int posicionY = snake.get(0).getY();
 		if (posicionY == mundo.length - 1) {
 			posicionY = -1;
@@ -164,7 +180,10 @@ public class SimulacionPrueba {
 
 	private void moverIzquierda() {
 		guardarPosicion(snake.get(0));
-		ponerPosicionAnteriorEnBlanco(snake.get(0));
+		if (snake.size() == 1) {
+			ponerPosicionAnteriorEnBlanco(snake.get(0));
+		}
+
 		int posicionY = snake.get(0).getY();
 		if (posicionY == 0) {
 			posicionY = mundo.length;
@@ -180,6 +199,10 @@ public class SimulacionPrueba {
 	private void guardarPosicion(SnakePrueba snake) {
 		posicionXAux = snake.getX();
 		posicionYAux = snake.getY();
+	}
+
+	private boolean chocaConSerpiente() {
+		return mundo[snake.get(0).getX()][snake.get(0).getY()] == 1;
 	}
 
 }

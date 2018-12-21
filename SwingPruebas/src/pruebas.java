@@ -12,7 +12,7 @@ public class pruebas {
 
 	JFrame frame;
 	public JPanel[][] celdasTablero = new JPanel[20][20];
-	public int teclaPulsada;
+	public int teclaPulsada = 40;
 	
 
 	/**
