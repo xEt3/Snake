@@ -11,8 +11,7 @@ public class SimulacionPrueba {
 
 	public SimulacionPrueba() {
 		snake.add(new SnakePrueba());
-		mundo [8][1] = 2;
-		mundo [10][1] = 2;
+		generarFruta();
 
 	}
 
@@ -43,6 +42,7 @@ public class SimulacionPrueba {
 		actualizarSnake();
 		if (comeFruta()) {
 		snake.add(new SnakePrueba(snake.get(snake.size()-1).getX(),snake.get(snake.size()-1).getY()));
+		generarFruta();
 		}
 		actualizarCuerpo();
 		for (int i = 0; i < snake.size(); i++) {
@@ -78,7 +78,26 @@ public class SimulacionPrueba {
 		 moverAbajo();
 		//moverArriba();
 	}
-
+	private void generarFruta() {
+		
+		int x = (int) (Math.random() * 20);
+		int y = (int) (Math.random() * 20);
+		
+		while (true) {
+			if(mundo[x][y]==0){
+				mundo[x][y] = 2;
+				break;
+				
+			}else {
+				 x = (int) (Math.random() * 20);
+				 y = (int) (Math.random() * 20);
+			}
+			
+		}
+		
+		
+		
+	}
 	private void moverArriba() {
 		guardarPosicion(snake.get(0));
 		ponerPosicionAnteriorEnBlanco(snake.get(0));
@@ -102,6 +121,7 @@ public class SimulacionPrueba {
 		snake.get(0).setX(posicionX);
 
 	}
+
 
 	private void ponerPosicionAnteriorEnBlanco(SnakePrueba snake) {
 		mundo[snake.getX()][snake.getY()] = 0;
