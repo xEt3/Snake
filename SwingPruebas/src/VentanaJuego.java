@@ -12,9 +12,8 @@ import javax.swing.JTextPane;
 import javax.management.monitor.Monitor;
 import javax.swing.JEditorPane;
 
-public class VentanaJuego {
+public class VentanaJuego extends JFrame{
 
-	JFrame frame;
 	public JPanel[][] celdasTablero = new JPanel[20][20];
 	public int teclaPulsada = 40;
 	public JTextPane indicadorLVL = new JTextPane();
@@ -30,11 +29,11 @@ public class VentanaJuego {
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		frame = new JFrame();
-		frame.setBounds(500,100, 850, 700);
-		frame.setMaximizedBounds(new Rectangle(500,100, 850, 700));
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.addKeyListener(new KeyListener() {
+		this.setTitle("Snake");
+		this.setBounds(500,100, 850, 700);
+		this.setMaximizedBounds(new Rectangle(500,100, 850, 700));
+		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		this.addKeyListener(new KeyListener() {
 
 			@Override
 			public void keyTyped(KeyEvent arg0) {
@@ -55,20 +54,20 @@ public class VentanaJuego {
 			}
 		});
 		
-		JPanel tablero = new JPanel();
-		tablero.setLayout(new GridLayout(20, 20, 0, 0));
-
-		for (int x = 0; x < celdasTablero.length; x++) {
-			for (int y = 0; y < celdasTablero[0].length; y++) {
-
-				celdasTablero[x][y] = new JPanel();
-				celdasTablero[x][y].setBackground(Color.WHITE);
-				tablero.add(celdasTablero[x][y]);
-			}
-		}
-		frame.getContentPane().add(tablero, BorderLayout.CENTER);
+//		JPanel tablero = new JPanel();
+//		tablero.setLayout(new GridLayout(20, 20, 0, 0));
+//
+//		for (int x = 0; x < celdasTablero.length; x++) {
+//			for (int y = 0; y < celdasTablero[0].length; y++) {
+//
+//				celdasTablero[x][y] = new JPanel();
+//				celdasTablero[x][y].setBackground(Color.WHITE);
+//				tablero.add(celdasTablero[x][y]);
+//			}
+//		}
+		
 		JPanel panelNivel = new JPanel();
-		frame.getContentPane().add(panelNivel, BorderLayout.PAGE_END);
+		this.getContentPane().add(panelNivel, BorderLayout.PAGE_END);
 		
 		
 		indicadorLVL.setEnabled(false);
