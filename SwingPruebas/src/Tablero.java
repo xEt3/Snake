@@ -1,12 +1,13 @@
 import java.awt.Color;
 import java.awt.GridLayout;
-
 import javax.swing.JPanel;
 
 public class Tablero extends JPanel {
 	
-	public JPanel[][] celdasTablero;
 
+	private static final long serialVersionUID = 1L;
+
+	public JPanel[][] celdasTablero;
 	private int longX;
 	private int longY;
 	
@@ -16,6 +17,7 @@ public class Tablero extends JPanel {
 		setLongY(20);
 		setCeldasTablero(new JPanel[longX][longY]);
 		this.setLayout(new GridLayout(longX, longY, 0, 0));
+		
 		generarCeldas();
 	}
 	
@@ -24,6 +26,7 @@ public class Tablero extends JPanel {
 		setLongY(longY);
 		setCeldasTablero(new JPanel[longX][longY]);
 		this.setLayout(new GridLayout(longX, longY, 0, 0));
+		
 		generarCeldas();
 	}
 	
@@ -37,6 +40,7 @@ public class Tablero extends JPanel {
 			}
 		}
 	}
+	
 	public int getLongX() {
 		return longX;
 	}
@@ -56,4 +60,5 @@ public class Tablero extends JPanel {
 	public void setCeldasTablero(JPanel[][] celdasTablero) {
 		this.celdasTablero = celdasTablero;
 	}
-}
+
+}//class

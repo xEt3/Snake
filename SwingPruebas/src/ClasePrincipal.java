@@ -6,6 +6,7 @@ public class ClasePrincipal {
 	static VentanaJuego ventanaJuego = new VentanaJuego();
 	static SimulacionJuego simulacion; 
 	static Tablero tablero = new Tablero();
+	static PanelIndicadorLVL panelLVL = new PanelIndicadorLVL();
 	
 	public static void main(String[] args) {
 	
@@ -13,6 +14,7 @@ public class ClasePrincipal {
 			public void run() {
 				try {
 					addTablero();
+					addIndicadorLVL();
 					mostrarVentanaJuego();
 					crearPartidaNueva();
 					iniciarPartidaCreada();
@@ -36,7 +38,9 @@ public class ClasePrincipal {
 	private static void addTablero(){
 		ventanaJuego.getContentPane().add(tablero, BorderLayout.CENTER);
 	}
-	
+	private static void addIndicadorLVL() {
+		ventanaJuego.getContentPane().add(panelLVL, BorderLayout.PAGE_END);
+	}
 	static void mostrarVentanaJuego() {
 		ventanaJuego.setVisible(true);
 	}

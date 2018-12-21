@@ -24,6 +24,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[1][17].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[1][18].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[1][19].setBackground(Color.RED);
+	
 		ClasePrincipal.tablero.celdasTablero[2][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[2][5].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[2][8].setBackground(Color.RED);
@@ -32,6 +33,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[2][13].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[2][14].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[2][16].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[3][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[3][5].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[3][8].setBackground(Color.RED);
@@ -39,6 +41,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[3][12].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[3][14].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[3][16].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[4][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[4][2].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[4][3].setBackground(Color.RED);
@@ -51,6 +54,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[4][16].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[4][17].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[4][18].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[5][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[5][3].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[5][5].setBackground(Color.RED);
@@ -58,6 +62,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[5][10].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[5][14].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[5][16].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[6][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[6][3].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[6][5].setBackground(Color.RED);
@@ -65,6 +70,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[6][10].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[6][14].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[6][16].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[7][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[7][1].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[7][2].setBackground(Color.RED);
@@ -77,6 +83,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[7][17].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[7][18].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[7][19].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[9][1].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[9][3].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[9][5].setBackground(Color.RED);
@@ -87,6 +94,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[9][15].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[9][17].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[9][19].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[10][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[10][2].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[10][4].setBackground(Color.RED);
@@ -97,6 +105,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[10][14].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[10][16].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[10][18].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[12][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[12][1].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[12][2].setBackground(Color.RED);
@@ -111,6 +120,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[12][17].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[12][18].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[12][19].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[13][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[13][3].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[13][5].setBackground(Color.RED);
@@ -118,6 +128,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[13][11].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[13][16].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[13][19].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[14][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[14][3].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[14][5].setBackground(Color.RED);
@@ -125,6 +136,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[14][11].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[14][16].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[14][19].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[15][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[15][3].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[15][5].setBackground(Color.RED);
@@ -136,6 +148,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[15][17].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[15][18].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[15][19].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[16][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[16][3].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[16][6].setBackground(Color.RED);
@@ -143,6 +156,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[16][11].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[16][16].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[16][17].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[17][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[17][3].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[17][6].setBackground(Color.RED);
@@ -150,6 +164,7 @@ public class GameOver{
 		ClasePrincipal.tablero.celdasTablero[17][11].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[17][16].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[17][18].setBackground(Color.RED);
+		
 		ClasePrincipal.tablero.celdasTablero[18][0].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[18][1].setBackground(Color.RED);
 		ClasePrincipal.tablero.celdasTablero[18][2].setBackground(Color.RED);
