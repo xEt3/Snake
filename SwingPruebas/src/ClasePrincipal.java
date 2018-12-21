@@ -1,9 +1,9 @@
 import java.awt.EventQueue;
 
-public class PrincipalPruebas {
+public class ClasePrincipal {
 
-	static pruebas window = new pruebas();
-	static SimulacionPrueba simulacio = new SimulacionPrueba();
+	static VentanaJuego window = new VentanaJuego();
+	static SimulacionJuego simulacio = new SimulacionJuego();
 	
 	public static void main(String[] args) {
 	

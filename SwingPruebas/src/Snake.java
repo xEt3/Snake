@@ -1,15 +1,15 @@
 
-public class SnakePrueba {
+public class Snake {
 
 	int X ;
 	int Y ;
 	
-	public SnakePrueba() {
+	public Snake() {
 		setX(0);
 		setY(1);
 		
 	}
-	public SnakePrueba(int X, int Y) {
+	public Snake(int X, int Y) {
 		setX(X);
 		setY(Y);
 	}

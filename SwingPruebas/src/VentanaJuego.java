@@ -7,18 +7,20 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.JTextPane;
+import javax.swing.JEditorPane;
 
-public class pruebas {
+public class VentanaJuego {
 
 	JFrame frame;
 	public JPanel[][] celdasTablero = new JPanel[20][20];
 	public int teclaPulsada = 40;
-	
+	public JTextPane indicadorLVL = new JTextPane();
 
 	/**
 	 * Create the application.
 	 */
-	public pruebas() {
+	public VentanaJuego() {
 		initialize();
 	}
 
@@ -27,7 +29,7 @@ public class pruebas {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(300, 300, 450, 300);
+		frame.setBounds(500,100, 950, 800);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addKeyListener(new KeyListener() {
 
@@ -62,7 +64,13 @@ public class pruebas {
 			}
 		}
 		frame.getContentPane().add(tablero, BorderLayout.CENTER);
+		JPanel panelNivel = new JPanel();
+		frame.getContentPane().add(panelNivel, BorderLayout.PAGE_END);
 		
+		
+		indicadorLVL.setEnabled(false);
+		indicadorLVL.setEditable(false);
+		panelNivel.add(indicadorLVL);
+	
 	}
-
 }
