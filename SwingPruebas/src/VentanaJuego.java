@@ -1,5 +1,6 @@
 import java.awt.EventQueue;
 import java.awt.GridLayout;
+import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
@@ -8,6 +9,7 @@ import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JTextPane;
+import javax.management.monitor.Monitor;
 import javax.swing.JEditorPane;
 
 public class VentanaJuego {
@@ -29,7 +31,8 @@ public class VentanaJuego {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(500,100, 950, 800);
+		frame.setBounds(500,100, 850, 700);
+		frame.setMaximizedBounds(new Rectangle(500,100, 850, 700));
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.addKeyListener(new KeyListener() {
 
