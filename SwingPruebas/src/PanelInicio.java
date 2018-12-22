@@ -16,7 +16,6 @@ public class PanelInicio extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 	public JButton btnJugar = new JButton("jugar");
-
 	public PanelInicio() {
 		initialize();
 	}

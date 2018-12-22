@@ -12,6 +12,7 @@ public class SimulacionJuego extends GameOver {
 	byte[][] mundo;
 	ArrayList<Snake> snake = new ArrayList<Snake>();
 	private int lvl = 0;
+	public int ultmTeclaValida = 40;
 	private Thread ejecucion = new Thread(new Runnable() {
 
 		@Override
@@ -90,19 +91,40 @@ public class SimulacionJuego extends GameOver {
 
 	void actualizarSnake() {
 
-		if (ClasePrincipal.ventanaJuego.teclaPulsada == 37 || ClasePrincipal.ventanaJuego.teclaPulsada == 65 || ClasePrincipal.ventanaJuego.teclaPulsada == 100) {
+		if (ClasePrincipal.ventanaJuego.teclaPulsada == 37 || ClasePrincipal.ventanaJuego.teclaPulsada == 65
+				|| ClasePrincipal.ventanaJuego.teclaPulsada == 100) {
 			moverIzquierda();
+			ultmTeclaValida = 37;
 
-		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 38 || ClasePrincipal.ventanaJuego.teclaPulsada == 87 || ClasePrincipal.ventanaJuego.teclaPulsada == 104) {
+		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 38 || ClasePrincipal.ventanaJuego.teclaPulsada == 87
+				|| ClasePrincipal.ventanaJuego.teclaPulsada == 104) {
 			moverArriba();
-
-		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 39 || ClasePrincipal.ventanaJuego.teclaPulsada == 68 || ClasePrincipal.ventanaJuego.teclaPulsada == 102) {
+			ultmTeclaValida = 38;
+		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 39 || ClasePrincipal.ventanaJuego.teclaPulsada == 68
+				|| ClasePrincipal.ventanaJuego.teclaPulsada == 102) {
 			moverDerecha();
-
-		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 40 || ClasePrincipal.ventanaJuego.teclaPulsada == 83 || ClasePrincipal.ventanaJuego.teclaPulsada == 98) {
+			ultmTeclaValida = 39;
+		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 40 || ClasePrincipal.ventanaJuego.teclaPulsada == 83
+				|| ClasePrincipal.ventanaJuego.teclaPulsada == 98) {
 			moverAbajo();
+			ultmTeclaValida = 40;
+		} else {
+			actualizarSnakeConUltimaTeclaValida();
 		}
 
+	}
+
+	private void actualizarSnakeConUltimaTeclaValida() {
+		
+		if (ultmTeclaValida == 37) {
+			moverIzquierda();
+		} else if (ultmTeclaValida == 38) {
+			moverArriba();
+		} else if (ultmTeclaValida == 39) {
+			moverDerecha();
+		} else if (ultmTeclaValida == 40) {
+			moverAbajo();
+		}
 	}
 
 	private boolean comeFruta() {
