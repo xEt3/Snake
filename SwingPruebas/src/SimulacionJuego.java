@@ -4,7 +4,7 @@ import java.util.ArrayList;
 /**
  * Clase donde se realiza el mecanismo del juego
  * 
- * @author nacho
+ * @author Ignacio Belmonte
  *
  */
 public class SimulacionJuego extends GameOver {
@@ -41,10 +41,7 @@ public class SimulacionJuego extends GameOver {
 		indicarLVL();
 	}
 
-	/**
-	 * Inicia el mundo
-	 */
-	public void iniciarMundo() {
+	public void iniciarJuego() {
 
 		ejecucion.start();
 	}
@@ -63,7 +60,8 @@ public class SimulacionJuego extends GameOver {
 		actualizarCuerpo();
 
 		if (chocaConSerpiente()) {
-			pintarGameOver();
+			mostrarPantallaGameOver(lvl);
+			ClasePrincipal.ventanaJuego.dispose();
 			ejecucion.stop();
 		}
 
