@@ -90,16 +90,16 @@ public class SimulacionJuego extends GameOver {
 
 	void actualizarSnake() {
 
-		if (ClasePrincipal.ventanaJuego.teclaPulsada == 37) {
+		if (ClasePrincipal.ventanaJuego.teclaPulsada == 37 || ClasePrincipal.ventanaJuego.teclaPulsada == 65 || ClasePrincipal.ventanaJuego.teclaPulsada == 100) {
 			moverIzquierda();
 
-		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 38) {
+		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 38 || ClasePrincipal.ventanaJuego.teclaPulsada == 87 || ClasePrincipal.ventanaJuego.teclaPulsada == 104) {
 			moverArriba();
 
-		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 39) {
+		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 39 || ClasePrincipal.ventanaJuego.teclaPulsada == 68 || ClasePrincipal.ventanaJuego.teclaPulsada == 102) {
 			moverDerecha();
 
-		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 40) {
+		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 40 || ClasePrincipal.ventanaJuego.teclaPulsada == 83 || ClasePrincipal.ventanaJuego.teclaPulsada == 98) {
 			moverAbajo();
 		}
 
