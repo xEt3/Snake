@@ -1,5 +1,7 @@
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * Clase principal
@@ -12,10 +14,32 @@ public class ClasePrincipal {
 	static VentanaJuego ventanaJuego;
 	static SimulacionJuego simulacion;
 	static Tablero tablero;
-	static PanelIndicadorLVL  panelLVL;
+	static PanelIndicadorLVL panelLVL;
+	static PanelInicio panelInicio;
 
 	public static void main(String[] args) {
+		mostrarMenuInicio();
+	}
 
+	static public void mostrarMenuInicio() {
+		panelInicio = new PanelInicio();
+		addBtnJugar();
+		panelInicio.setVisible(true);
+	}
+
+	static private void addBtnJugar() {
+		panelInicio.btnJugar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				panelInicio.dispose();
+				jugar();
+
+			}
+		});
+	}
+
+	static public void jugar() {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -47,15 +71,16 @@ public class ClasePrincipal {
 	}
 
 	private static void addIndicadorLVL() {
-		 panelLVL = new PanelIndicadorLVL();
+		panelLVL = new PanelIndicadorLVL();
 		ventanaJuego.getContentPane().add(panelLVL, BorderLayout.PAGE_END);
 	}
 
 	private static void mostrarVentanaJuego() {
 		ventanaJuego.setVisible(true);
 	}
-	
+
 	private static void crearVentanaJuego() {
 		ventanaJuego = new VentanaJuego();
 	}
+
 }// classs

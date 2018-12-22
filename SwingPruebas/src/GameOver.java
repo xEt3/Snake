@@ -13,16 +13,21 @@ import javax.swing.JButton;
 public class GameOver {
 
 	VentanaJuego ventanaGameOver = new VentanaJuego();
-	JButton btnVolverJugar = new JButton("Volver a Jugar");
+	JButton btnVolverJugar = new JButton("Play Again");
+	JButton btnVolverAInicio = new JButton("Back home");
 	PanelIndicadorLVL panelLVL = new PanelIndicadorLVL();
 	Tablero tablero = new Tablero();
 
 	protected void mostrarPantallaGameOver(int lvl) {
 		addTablero();
 		addFuncionBotonVolverJugar();
+		addFuncionBotonVolverAInicio();
 		panelLVL.indicadorLVL.setEnabled(true);
+		panelLVL.setBackground(Color.RED);
+		panelLVL.indicadorLVL.setBackground(Color.green);
 		panelLVL.indicadorLVL.setText("LVL : " + lvl);
 		addBtnVolverJugar();
+		addBtnVolverAInicio();
 		addIndicadorLVL();
 		ventanaGameOver.setTitle("GAME OVER");
 		ventanaGameOver.setVisible(true);
@@ -31,8 +36,14 @@ public class GameOver {
 	}
 
 	private void addBtnVolverJugar() {
+		btnVolverJugar.setBackground(Color.white);
 		panelLVL.add(btnVolverJugar);
 	}
+	private void addBtnVolverAInicio() {
+		btnVolverAInicio.setBackground(Color.white);
+		panelLVL.add(btnVolverAInicio);
+	}
+
 
 	private void addFuncionBotonVolverJugar() {
 		btnVolverJugar.addActionListener(new ActionListener() {
@@ -40,11 +51,24 @@ public class GameOver {
 			@Override
 			public void actionPerformed(ActionEvent arg0) {
 
-				ClasePrincipal.main(null);
+				ClasePrincipal.jugar();
 				ventanaGameOver.dispose();
 			}
 		});
 	}
+
+	private void addFuncionBotonVolverAInicio() {
+		btnVolverAInicio.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+
+				ClasePrincipal.mostrarMenuInicio();
+				ventanaGameOver.dispose();
+			}
+		});
+	}
+
 
 	private void addIndicadorLVL() {
 		ventanaGameOver.getContentPane().add(panelLVL, BorderLayout.PAGE_END);
