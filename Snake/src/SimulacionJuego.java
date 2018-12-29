@@ -38,13 +38,14 @@ public class SimulacionJuego extends GameOver {
 	public SimulacionJuego() {
 		mundo = new byte[ClasePrincipal.tablero.getLongX()][ClasePrincipal.tablero.getLongY()];
 		snake.add(new Snake());
-		generarFruta();
+		
 		indicarLVL();
 	}
 
 	public void iniciarJuego() {
-
+		
 		ejecucion.start();
+		generarFruta();
 	}
 
 	@SuppressWarnings("deprecation")
