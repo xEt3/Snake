@@ -1,4 +1,5 @@
 import java.awt.Color;
+import java.awt.Toolkit;
 import java.util.ArrayList;
 
 /**
@@ -36,7 +37,7 @@ public class SimulacionJuego extends GameOver {
 	int posicionYAux;
 
 	public SimulacionJuego() {
-		mundo = new byte[ClasePrincipal.tablero.getLongX()][ClasePrincipal.tablero.getLongY()];
+		mundo = new byte[ClasePrincipal.ventanaJuego.tableroJugador.getLongX()][ClasePrincipal.ventanaJuego.tableroJugador.getLongY()];
 		snake.add(new Snake());
 		
 		indicarLVL();
@@ -83,13 +84,13 @@ public class SimulacionJuego extends GameOver {
 			for (int j = 0; j < mundo[0].length; j++) {
 
 				if (mundo[i][j] == 1) {
-					ClasePrincipal.tablero.celdasTablero[i][j].setBackground(Color.BLACK);
+					ClasePrincipal.ventanaJuego.tableroJugador.celdasTablero[i][j].setBackground(Color.BLACK);
 
 				} else if (mundo[i][j] == 0) {
-					ClasePrincipal.tablero.celdasTablero[i][j].setBackground(Color.WHITE);
+					ClasePrincipal.ventanaJuego.tableroJugador.celdasTablero[i][j].setBackground(Color.WHITE);
 
 				} else if (mundo[i][j] == 2) {
-					ClasePrincipal.tablero.celdasTablero[i][j].setBackground(Color.RED);
+					ClasePrincipal.ventanaJuego.tableroJugador.celdasTablero[i][j].setBackground(Color.RED);
 				}
 			}
 		}
@@ -259,7 +260,7 @@ public class SimulacionJuego extends GameOver {
 	}
 
 	private void indicarLVL() {
-		ClasePrincipal.panelLVL.indicadorLVL.setText("LVL: " + lvl);
+		ClasePrincipal.ventanaJuego.panelLVL.indicadorLVL.setText("LVL: " + lvl);
 	}
 
 }// class

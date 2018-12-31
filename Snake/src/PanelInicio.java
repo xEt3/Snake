@@ -4,6 +4,9 @@ import java.awt.BorderLayout;
 import java.awt.Color;
 import javax.swing.JPanel;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 import javax.swing.JButton;
 
 /**
@@ -44,14 +47,29 @@ public class PanelInicio extends JFrame {
 		btnJugar.setForeground(Color.WHITE);
 
 		btnJugar.setBackground(Color.BLACK);
+		btnJugar.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ClasePrincipal.panelInicio.dispose();
+				ClasePrincipal.jugar();
+
+			}
+		});
+		
 		panel_1.add(btnJugar);
 
 		JSeparator separator_3 = new JSeparator();
 		panel_1.add(separator_3);
+		
+		JButton btnNewButton = new JButton("Multijugador");
+		panel_1.add(btnNewButton);
+		
+		JSeparator separator_4 = new JSeparator();
+		panel_1.add(separator_4);
 
 		JSeparator separator_1 = new JSeparator();
 		panel.add(separator_1);
 
 	}
-
 }
