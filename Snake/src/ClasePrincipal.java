@@ -10,6 +10,7 @@ import java.awt.EventQueue;
 public class ClasePrincipal {
 	static VentanaJuego ventanaJuego;
 	static SimulacionJuego simulacion;
+	static VentanaMultijugador panelMultijugador;
 	static PanelInicio panelInicio;
 
 	public static void main(String[] args) {
@@ -35,6 +36,11 @@ public class ClasePrincipal {
 			}
 
 		});
+	}
+	
+	static public void multijugador() {
+		panelMultijugador = new VentanaMultijugador();
+		panelMultijugador.setVisible(true);
 	}
 
 	private static void iniciarPartidaCreada() {

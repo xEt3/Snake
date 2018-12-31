@@ -21,7 +21,7 @@ public class Tablero extends JPanel {
 		setLongX(20);
 		setLongY(20);
 		setCeldasTablero(new JPanel[longX][longY]);
-		this.setLayout(new GridLayout(longX, longY, 0, 0));
+		this.setLayout(new GridLayout(longX, longY, 1, 1));
 
 		generarCeldas();
 	}

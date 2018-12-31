@@ -62,8 +62,18 @@ public class PanelInicio extends JFrame {
 		JSeparator separator_3 = new JSeparator();
 		panel_1.add(separator_3);
 		
-		JButton btnNewButton = new JButton("Multijugador");
-		panel_1.add(btnNewButton);
+		JButton btnMultijugador= new JButton("Multijugador");
+		
+		btnMultijugador.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				ClasePrincipal.panelInicio.dispose();
+				ClasePrincipal.multijugador();
+
+			}
+		});
+		panel_1.add(btnMultijugador);
 		
 		JSeparator separator_4 = new JSeparator();
 		panel_1.add(separator_4);
