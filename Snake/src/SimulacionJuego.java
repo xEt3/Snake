@@ -1,5 +1,4 @@
 import java.awt.Color;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 /**
@@ -11,64 +10,92 @@ import java.util.ArrayList;
 public class SimulacionJuego extends GameOver {
 
 	byte[][] mundo;
+	int posicionXAux;
+	int posicionYAux;
 	ArrayList<Snake> snake = new ArrayList<Snake>();
 	private int lvl = 0;
 	public int ultmTeclaValida = 40;
-	private Thread ejecucion = new Thread(new Runnable() {
 
+	public SimulacionJuego() {
+		mundo = new byte[ClasePrincipal.ventanaJuego.tableroJugador
+				.getLongX()][ClasePrincipal.ventanaJuego.tableroJugador.getLongY()];
+	}
+
+	public void iniciarJuego() {
+		snake.add(new Snake());
+		indicarLVL();
+		generarFruta();
+		ejecucion.start();
+	}
+
+	private void indicarLVL() {
+		ClasePrincipal.ventanaJuego.panelLVL.indicadorLVL.setText("LVL: " + lvl);
+	}
+
+	private void generarFruta() {
+		int x = (int) (Math.random() * 20);
+		int y = (int) (Math.random() * 20);
+		while (true) {
+			if (mundo[x][y] == 0) {
+				mundo[x][y] = 2;
+				break;
+			} else {
+				x = (int) (Math.random() * 20);
+				y = (int) (Math.random() * 20);
+			}
+		}
+	}
+
+	private Thread ejecucion = new Thread(new Runnable() {
 		@Override
 		public void run() {
-
 			while (true) {
 				mostrarMundo();
-
-				try {
-					Thread.sleep(200);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-
+				esperar(ejecucion);
 				actualizarMundo();
 			}
 		}
 	});
 
-	int posicionXAux;
-	int posicionYAux;
-
-	public SimulacionJuego() {
-		mundo = new byte[ClasePrincipal.ventanaJuego.tableroJugador.getLongX()][ClasePrincipal.ventanaJuego.tableroJugador.getLongY()];
-		snake.add(new Snake());
-		
-		indicarLVL();
+	protected void mostrarMundo() {
+		for (int i = 0; i < mundo.length; i++) {
+			for (int j = 0; j < mundo[0].length; j++) {
+				if (mundo[i][j] == 1) {
+					pintarCelda(i, j, Color.BLACK);
+				} else if (mundo[i][j] == 0) {
+					pintarCelda(i, j, Color.WHITE);
+				} else if (mundo[i][j] == 2) {
+					pintarCelda(i, j, Color.RED);
+				}
+			}
+		}
 	}
 
-	public void iniciarJuego() {
-		
-		ejecucion.start();
-		generarFruta();
+	private void pintarCelda (int X, int Y, Color color) {
+		ClasePrincipal.ventanaJuego.tableroJugador.celdasTablero[X][Y].setBackground(color);
+	}
+	
+	@SuppressWarnings("static-access")
+	private void esperar(Thread hilo) {
+		try {
+			hilo.sleep(200);
+		} catch (Exception e) {
+			System.out.println(e);
+		}
 	}
 
 	@SuppressWarnings("deprecation")
-	private void actualizarMundo() {
+	protected void actualizarMundo() {
 		actualizarSnake();
-
 		if (comeFruta()) {
 			agrandarSnake();
 			lvl++;
 			indicarLVL();
 			generarFruta();
 		}
-
 		actualizarCuerpo();
-
 		if (chocaConSerpiente()) {
-			try {
-				Thread.sleep(200);
-			} catch (InterruptedException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			esperar(ejecucion);
 			mostrarPantallaGameOver(lvl);
 			ClasePrincipal.ventanaJuego.dispose();
 			ejecucion.stop();
@@ -77,33 +104,11 @@ public class SimulacionJuego extends GameOver {
 		actualizarArrayMundo();
 	}
 
-	private void mostrarMundo() {
-
-		for (int i = 0; i < mundo.length; i++) {
-
-			for (int j = 0; j < mundo[0].length; j++) {
-
-				if (mundo[i][j] == 1) {
-					ClasePrincipal.ventanaJuego.tableroJugador.celdasTablero[i][j].setBackground(Color.BLACK);
-
-				} else if (mundo[i][j] == 0) {
-					ClasePrincipal.ventanaJuego.tableroJugador.celdasTablero[i][j].setBackground(Color.WHITE);
-
-				} else if (mundo[i][j] == 2) {
-					ClasePrincipal.ventanaJuego.tableroJugador.celdasTablero[i][j].setBackground(Color.RED);
-				}
-			}
-		}
-
-	}
-
 	void actualizarSnake() {
-
 		if (ClasePrincipal.ventanaJuego.teclaPulsada == 37 || ClasePrincipal.ventanaJuego.teclaPulsada == 65
 				|| ClasePrincipal.ventanaJuego.teclaPulsada == 100) {
 			moverIzquierda();
 			ultmTeclaValida = 37;
-
 		} else if (ClasePrincipal.ventanaJuego.teclaPulsada == 38 || ClasePrincipal.ventanaJuego.teclaPulsada == 87
 				|| ClasePrincipal.ventanaJuego.teclaPulsada == 104) {
 			moverArriba();
@@ -119,11 +124,9 @@ public class SimulacionJuego extends GameOver {
 		} else {
 			actualizarSnakeConUltimaTeclaValida();
 		}
-
 	}
 
 	private void actualizarSnakeConUltimaTeclaValida() {
-		
 		if (ultmTeclaValida == 37) {
 			moverIzquierda();
 		} else if (ultmTeclaValida == 38) {
@@ -134,6 +137,57 @@ public class SimulacionJuego extends GameOver {
 			moverAbajo();
 		}
 	}
+	private void moverArriba() {
+		guardarPosicion(snake.get(0));
+		if (snake.size() == 1) {
+			ponerPosicionAnteriorEnBlanco(snake.get(0));
+		}
+		int posicionX = snake.get(0).getX();
+		if (posicionX == 0) {
+			posicionX = mundo.length;
+		}
+		posicionX--;
+		snake.get(0).setX(posicionX);
+	}
+
+	private void moverAbajo() {
+		guardarPosicion(snake.get(0));
+		if (snake.size() == 1) {
+			ponerPosicionAnteriorEnBlanco(snake.get(0));
+		}
+		int posicionX = snake.get(0).getX();
+		if (posicionX == mundo.length - 1) {
+			posicionX = -1;
+		}
+		posicionX++;
+		snake.get(0).setX(posicionX);
+	}
+
+	private void moverDerecha() {
+		guardarPosicion(snake.get(0));
+		if (snake.size() == 1) {
+			ponerPosicionAnteriorEnBlanco(snake.get(0));
+		}
+		int posicionY = snake.get(0).getY();
+		if (posicionY == mundo.length - 1) {
+			posicionY = -1;
+		}
+		posicionY++;
+		snake.get(0).setY(posicionY);
+	}
+
+	private void moverIzquierda() {
+		guardarPosicion(snake.get(0));
+		if (snake.size() == 1) {
+			ponerPosicionAnteriorEnBlanco(snake.get(0));
+		}
+		int posicionY = snake.get(0).getY();
+		if (posicionY == 0) {
+			posicionY = mundo.length;
+		}
+		posicionY--;
+		snake.get(0).setY(posicionY);
+	}
 
 	private boolean comeFruta() {
 		return mundo[snake.get(0).getX()][snake.get(0).getY()] == 2;
@@ -141,23 +195,6 @@ public class SimulacionJuego extends GameOver {
 
 	private void agrandarSnake() {
 		snake.add(new Snake(snake.get(snake.size() - 1).getX(), snake.get(snake.size() - 1).getY()));
-	}
-
-	private void generarFruta() {
-		int x = (int) (Math.random() * 20);
-		int y = (int) (Math.random() * 20);
-
-		while (true) {
-
-			if (mundo[x][y] == 0) {
-				mundo[x][y] = 2;
-				break;
-
-			} else {
-				x = (int) (Math.random() * 20);
-				y = (int) (Math.random() * 20);
-			}
-		}
 	}
 
 	private void actualizarCuerpo() {
@@ -181,71 +218,6 @@ public class SimulacionJuego extends GameOver {
 		}
 	}
 
-	private void moverArriba() {
-		guardarPosicion(snake.get(0));
-		if (snake.size() == 1) {
-			ponerPosicionAnteriorEnBlanco(snake.get(0));
-		}
-		int posicionX = snake.get(0).getX();
-		if (posicionX == 0) {
-			posicionX = mundo.length;
-		}
-		posicionX--;
-
-		snake.get(0).setX(posicionX);
-	}
-
-	private void moverAbajo() {
-		guardarPosicion(snake.get(0));
-
-		if (snake.size() == 1) {
-			ponerPosicionAnteriorEnBlanco(snake.get(0));
-		}
-
-		int posicionX = snake.get(0).getX();
-
-		if (posicionX == mundo.length - 1) {
-			posicionX = -1;
-		}
-
-		posicionX++;
-		snake.get(0).setX(posicionX);
-	}
-
-	private void moverDerecha() {
-		guardarPosicion(snake.get(0));
-
-		if (snake.size() == 1) {
-			ponerPosicionAnteriorEnBlanco(snake.get(0));
-		}
-
-		int posicionY = snake.get(0).getY();
-
-		if (posicionY == mundo.length - 1) {
-			posicionY = -1;
-		}
-
-		posicionY++;
-		snake.get(0).setY(posicionY);
-	}
-
-	private void moverIzquierda() {
-		guardarPosicion(snake.get(0));
-
-		if (snake.size() == 1) {
-			ponerPosicionAnteriorEnBlanco(snake.get(0));
-		}
-
-		int posicionY = snake.get(0).getY();
-
-		if (posicionY == 0) {
-			posicionY = mundo.length;
-		}
-
-		posicionY--;
-		snake.get(0).setY(posicionY);
-	}
-
 	private void ponerPosicionAnteriorEnBlanco(Snake snake) {
 		mundo[snake.getX()][snake.getY()] = 0;
 	}
@@ -257,10 +229,6 @@ public class SimulacionJuego extends GameOver {
 
 	private boolean chocaConSerpiente() {
 		return mundo[snake.get(0).getX()][snake.get(0).getY()] == 1;
-	}
-
-	private void indicarLVL() {
-		ClasePrincipal.ventanaJuego.panelLVL.indicadorLVL.setText("LVL: " + lvl);
 	}
 
 }// class

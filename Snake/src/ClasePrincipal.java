@@ -1,7 +1,5 @@
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+
 
 /**
  * Clase principal
@@ -22,8 +20,6 @@ public class ClasePrincipal {
 		panelInicio = new PanelInicio();
 		panelInicio.setVisible(true);
 	}
-
-
 
 	static public void jugar() {
 		EventQueue.invokeLater(new Runnable() {
@@ -48,10 +44,6 @@ public class ClasePrincipal {
 	private static void crearPartidaNueva() {
 		simulacion = new SimulacionJuego();
 	}
-
-
-
-
 
 	private static void mostrarVentanaJuego() {
 		ventanaJuego.setVisible(true);
